@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e # Exit immediately if a command exits with a non-zero status.
+set -u # Treat unset variables as an error.
+
+
+#
+# DOCKER_USERNAME
+#
+# The default username for Docker Hub.
+#
+if [[ -z "${DOCKER_USERNAME+x}" ]] || [[ -z "${DOCKER_USERNAME}" ]]; then
+    # No username defined; use default.
+    # DOCKER_USERNAME="jlesage"
+    DOCKER_USERNAME="colebrown"
+fi
+DOCKER_REPO="$DOCKER_USERNAME/baseimage"
+
+#
+# GITHUB_USERNAME
+#
+# The default username for GitHub.
+#
+if [[ -z "${GITHUB_USERNAME+x}" ]] || [[ -z "${GITHUB_USERNAME}" ]]; then
+    # No username defined; use default.
+    # GITHUB_USERNAME="jlesage"
+    GITHUB_USERNAME="cole-brown"
+fi
+GITHUB_REPO="$GITHUB_USERNAME/baseimage"

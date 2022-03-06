@@ -52,6 +52,10 @@ do
     shift
 done
 
+# Define username & repo variables.
+hooks/repos
+
+# Validate tags.
 DOCKER_TAGS="$*"
 
 [ -z "$DOCKER_TAGS" ] && usage "ERROR: At least one Docker tag must be specified." && exit 1
@@ -63,9 +67,10 @@ for DOCKER_TAG in $DOCKER_TAGS; do
     fi
 done
 
+# Build each tag.
 for DOCKER_TAG in $DOCKER_TAGS; do
     # Export build variables.
-    export DOCKER_REPO=jlesage/baseimage
+    export DOCKER_REPO # defined in hooks/repos
     export DOCKER_TAG=$DOCKER_TAG
     export USE_DOCKER_BUILD_CACHE=${USE_DOCKER_BUILD_CACHE:-1}
 
